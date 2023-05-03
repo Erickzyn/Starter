@@ -8,7 +8,7 @@ const reviews = [
     },
     {
         id: 2,
-        name: "Connor",
+        name: "Ana Maria",
         job: "Web Designer",
         image: "https://images2.imgbox.com/2e/6e/JAMvTZ56_o.jpeg",
         text: "Helvetica artisam kindfolk thundercats. Disrupt glosier gastroup deep v vice frazen...",
