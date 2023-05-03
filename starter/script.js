@@ -17,7 +17,7 @@ const reviews = [
         id: 3,
         name: "Petter Jordan",
         job: "Intern",
-        image: "https://images2.imgbox.com/56/88/ojvFN3l5_o.jpeg",
+        image: "https://images2.imgbox.com/56/88/oJvFN3l5_o.jpeg",
         text: "Glossier tattooed 8-bit, fixie waistcoat offal activated charcoal slow-carb marfa.",
     },
     {
@@ -29,34 +29,46 @@ const reviews = [
     },
 ];
 
-const name = document.getElementById("author");
-    console.log(name);
+const author = document.getElementById('author');
+const job = document.getElementById('job');
+const image = document.getElementById('image-profile');
+const information = document.getElementById('text');
 
-const job = document.getElementById("job");
-    console.log(job);
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+const randomButton = document.querySelector('.random-button');
 
-const text = document.getElementById("text");
-    console.log(text);
+let currentItem = 0
 
-const button1 = document.getElementById("button1");
+function showPerson(person) {
+    const item = reviews[person]
+    image.src = item.image
+    author.textContent = item.name
+    job.textContent = item.job
+    information.textContent = item.text
+}
 
-let index = 1
+nextButton.addEventListener('click', () => {
+    currentItem++
 
-buttonNext.addEventListener("click", function(){
-    if(index > 3){
-        index = 0
+    if(currentItem > reviews.length -1){
+        currentItem = 0
     }
-    name.innerText = reviews[index].name
-    job.innerText = reviews[index].job
-    text.innerText = reviews[index].text  
-    index++
-    console.log(index)
+
+    showPerson(currentItem)
 })
 
-buttonBack.addEventListener("click", function(){
-    name.innerText = reviews[index].name
-    job.innerText = reviews[index].job
-    text.innerText = reviews[index].text  
-    index--
-    console.log(index)
+prevButton.addEventListener('click', () => {
+    currentItem--
+
+    if(currentItem < 0) {
+        currentItem = reviews.length - 1
+    }
+
+    showPerson(currentItem)
+})
+
+randomButton.addEventListener('click', () => {
+    const randomButton = Math.floor(Math.random() * reviews.length)
+    showPerson(randomButton)
 })
